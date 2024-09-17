@@ -8,21 +8,22 @@ import { UserProgress } from '@/components/UserProgress';
 import Unit from './unit';
 
 const LearnPage = async () => {
+  // Fetch user progress first to determine if redirect is needed
+  const userProgress = await getUserProgress();
+
+  // If no active course, redirect to courses page
+  if (!userProgress || !userProgress.activeCourse) {
+    // Redirect must happen here, before rendering anything
+    redirect('/courses');
+  }
 
   try {
-    // Fetch all data concurrently
-    const [userProgress, units, courseProgress, lessonPercentage] = await Promise.all([
-      getUserProgress(),        // Call functions directly inside Promise.all
+    // Fetch remaining data concurrently
+    const [units, courseProgress, lessonPercentage] = await Promise.all([
       getUnits(),
       getCourseProgress(),
       getLessonPercentage(),
     ]);
-
-    // If no active course, redirect to courses page
-    if (!userProgress || !userProgress.activeCourse) {
-      redirect('/courses');
-      return null;
-    }
 
     return (
       <div className='flex flex-row-reverse gap-[48px] px-6'>
@@ -30,11 +31,11 @@ const LearnPage = async () => {
           <UserProgress
             activeCourse={{
               title: userProgress.activeCourse.title,
-              imageSrc: userProgress.activeCourse.imageSrc
+              imageSrc: userProgress.activeCourse.imageSrc,
             }}
             hearts={userProgress.hearts}
             points={userProgress.points}
-            hasActiveSubscription={false} // Use correct value for subscription
+            hasActiveSubscription={userProgress.hasActiveSubscription || false}
           />
         </StickyWrapper>
         <FeedWrapper>
@@ -47,8 +48,8 @@ const LearnPage = async () => {
                 title={unit.title}
                 description={unit.description}
                 lessons={unit.lessons}
-                activeLesson={courseProgress?.activeLesson} // Make sure courseProgress is defined
-                activeLessonPercentage={lessonPercentage || 0} // Fallback to 0 if undefined
+                activeLesson={courseProgress?.activeLesson}
+                activeLessonPercentage={lessonPercentage || 0}
               />
             </div>
           ))}
@@ -57,8 +58,7 @@ const LearnPage = async () => {
     );
   } catch (error) {
     console.error("Error loading LearnPage data:", error);
-    // Display error message to the user
-    return <div>Error loading page content.</div>;
+    return <div>Error loading page content. Please try again later.</div>;
   }
 };
 
