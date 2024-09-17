@@ -47,7 +47,7 @@ export const LessonButton = ({
 
   const Icon = isCompleted ? Check : isLast ? StarIcon : Crown;
 
-  const href = isCompleted ? `/lessons/${id}` : "/lessons";
+  const href = isCompleted ? `/lesson/${id}` : "/lesson";
 
   return (
     <Link href={href} aria-disabled={locked} style={{ pointerEvents: locked ? "none" : "auto" }}>
