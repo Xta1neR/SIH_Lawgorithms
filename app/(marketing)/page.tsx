@@ -16,7 +16,7 @@ export default function Home() {
         />
       </div>
       <div className="flex flex-col items-center gap-y-8">
-        <h1 className="text-xl lg:text-3xl font-bold text-teal-600 uppercase max-w-[480px] text-center">
+        <h1 className="text-xl lg:text-2xl font-bold text-teal-800 uppercase max-w-[480px] text-center">
             Learn, Practice and master the Indian Constitution.
         </h1>
         <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
