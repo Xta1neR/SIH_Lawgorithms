@@ -23,146 +23,203 @@ const main = async () => {
 
     // Insert courses
     await db.insert(schema.courses).values([
-      { id: 1, title: "Constitution", imageSrc: "/constitution.jpeg" },
-      { id: 2, title: "Judiciary", imageSrc: "/judiciary.png" },
-      { id: 3, title: "Government", imageSrc: "/government.png" },
-      { id: 4, title: "States & UTs", imageSrc: "/states.png" },
-      { id: 5, title: "Citizens", imageSrc: "/citizens.png" },
-      { id: 6, title: "Parliament", imageSrc: "/parliament.png" },
+      { id: 1, title: "History & Evolution", imageSrc: "/constitution.jpeg" },
+      { id: 2, title: "Legislature", imageSrc: "/legislature.png" },
+      { id: 3, title: "Executive", imageSrc: "/government.png" },
+      { id: 4, title: "Judiciary", imageSrc: "/judiciary.png" },
+      { id: 5, title: "Fundamental Rights", imageSrc: "/citizens.png" },
+      { id: 6, title: "Fundamental Duties", imageSrc: "/parliament.png" },
+      { id: 7, title: "Federal Structure & State Relations", imageSrc: "/states.png" },
+      { id: 8, title: "Emergency Provisions", imageSrc: "/siren.png" },
+
     ]);
 
     // Insert units
     await db.insert(schema.units).values([
-      // Constitution units
+      // History and Evolution units
       {
         id: 1,
-        title: "History",
+        title: "What is Constitution",
         description: "History of the Constitution",
         courseId: 1,
         order: 1,
       },
       {
         id: 2,
-        title: "Preamble",
-        description: "Preamble of the Constitution",
+        title: "Formation & background of Constitution",
+        description: "How the Constitution evolved over time",
         courseId: 1,
         order: 2,
       },
       {
         id: 3,
-        title: "Important Acts",
-        description: "Important Acts in Constitution",
+        title: "The Preamble",
+        description: "Preamble of the Constitution",
         courseId: 1,
         order: 3,
       },
 
-      // Judiciary units
+      // Legislature units
       {
         id: 4,
-        title: "Supreme Court",
-        description: "Overview of the Supreme Court",
+        title: "What is Legislature",
+        description: "Overview of the Legislature",
         courseId: 2,
         order: 1,
       },
       {
         id: 5,
-        title: "High Court",
-        description: "Overview of the High Court",
+        title: "Introduction to Parliament",
+        description: "Overview of the Parliament",
         courseId: 2,
         order: 2,
       },
       {
         id: 6,
-        title: "District Court",
-        description: "Overview of the District Court",
+        title: "Structure of Parliament",
+        description: "Description about the parliaments",
         courseId: 2,
         order: 3,
       },
       {
         id: 7,
-        title: "Judges Powers",
-        description: "Powers of Judges and CJI",
+        title: "Functions & Powers",
+        description: "What powers do the Houses hold ",
         courseId: 2,
         order: 4,
       },
 
-      // Government units
+      // Executive units
       {
         id: 8,
-        title: "Central Government",
-        description: "Central Government powers",
+        title: "What is Executive",
+        description: "Overview of the Executive",
         courseId: 3,
         order: 1,
       },
       {
         id: 9,
-        title: "State Government",
-        description: "State Government powers",
+        title: "Indian Executive Structure",
+        description: "Important figures of Indian Politics",
         courseId: 3,
         order: 2,
       },
 
-      // States & UTs units
+      // Judiciary units
       {
         id: 10,
-        title: "Common Acts",
-        description: "Common Acts across States & UTs",
+        title: "What is Judiciary",
+        description: "Overview of the Judiciary",
         courseId: 4,
         order: 1,
       },
       {
         id: 11,
-        title: "Special State Acts",
-        description: "Special Acts for States",
+        title: "Supreme Court",
+        description: "Description about the Supreme Court",
         courseId: 4,
         order: 2,
       },
-
-      // Citizens units
       {
         id: 12,
-        title: "Fundamental Rights",
-        description: "Rights of the citizens",
-        courseId: 5,
-        order: 1,
+        title: "High Court",
+        description: "Description about the High Court",
+        courseId: 4,
+        order: 3,
       },
       {
         id: 13,
-        title: "Fundamental Duties",
-        description: "Duties of the citizens",
-        courseId: 5,
-        order: 2,
+        title: "District Court",
+        description: "Description about the District Court",
+        courseId: 4,
+        order: 4,
       },
 
-      // Parliament units
+      // Fundamental Rights units
       {
         id: 14,
-        title: "History",
-        description: "History of the Parliament",
-        courseId: 6,
+        title: "What are Fundamental Rights",
+        description: "Overview of the Fundamental Rights",
+        courseId: 5,
         order: 1,
       },
       {
         id: 15,
-        title: "Role of President",
-        description: "Role of the President in Government",
-        courseId: 6,
+        title: "Dive into the Fundamental Rights",
+        description: "",
+        courseId: 5,
         order: 2,
       },
+
+      // Fundamental Duties
       {
         id: 16,
-        title: "Role of Prime Minister",
-        description: "Role of the Prime Minister in Government",
+        title: "What are Fundamental Duties",
+        description: "Overview of the Fundamental Duties",
         courseId: 6,
-        order: 3,
+        order: 1,
       },
       {
         id: 17,
-        title: "Lower and Upper Houses",
-        description: "Powers of Lower and Upper Houses",
+        title: "Importance and Impact",
+        description: "How these duties contribute to society",
         courseId: 6,
-        order: 4,
+        order:2,
       },
+
+      //Federal Structure and State Relations
+      {
+        id: 18,
+        title: "What is Federal Structure",
+        description: "Overview of Federal Structures",
+        courseId: 7,
+        order:1,
+      },
+      {
+        id: 19,
+        title: "Distribution of Powers",
+        description: "Powers of States and Union Government",
+        courseId: 7,
+        order:2,
+      },
+      {
+        id: 20,
+        title: "Financial Relations",
+        description: "Taxes and Taxpayers",
+        courseId: 7,
+        order:3,
+      },
+      {
+        id: 21,
+        title: "Inter-state Relations",
+        description: "Disputes and agreements among states",
+        courseId: 7,
+        order:4,
+      },
+
+      //Emergency Provisons
+      {
+        id: 22,
+        title: "National Emergency",
+        description: "Overview of National Emergency",
+        courseId: 8,
+        order:1,
+      },
+      {
+        id: 23,
+        title: "State Emergency",
+        description: "Overview of State Emergency",
+        courseId: 8,
+        order:2,
+      },
+      {
+        id: 24,
+        title: "Financial Emergency",
+        description: "Overview of Financial Emergency",
+        courseId: 8,
+        order:3,
+      },
+
     ]);
 
     // Insert lessons for each unit
