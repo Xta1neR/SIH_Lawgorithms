@@ -6,6 +6,7 @@ import { getCourseProgress, getLessonPercentage, getUnits, getUserProgress } fro
 import { redirect } from 'next/navigation';
 import { UserProgress } from '@/components/UserProgress';
 import Unit from './unit';
+import LawBot from '/components/LawBot';
 
 const LearnPage = async () => {
   // Fetch user progress first to determine if redirect is needed
@@ -27,6 +28,7 @@ const LearnPage = async () => {
 
     return (
       <div className='flex flex-row-reverse gap-[48px] px-6'>
+        
         <StickyWrapper>
           <UserProgress
             activeCourse={{
@@ -54,6 +56,7 @@ const LearnPage = async () => {
             </div>
           ))}
         </FeedWrapper>
+        <LawBot/>
       </div>
     );
   } catch (error) {

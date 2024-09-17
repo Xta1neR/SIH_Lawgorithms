@@ -23,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <main>{children}</main>
+  
         <Toaster />
         <ExitModal />
       </body>
